@@ -1,4 +1,4 @@
-# Get Base Image (Full .NET Core SDK)
+# Get Base Image (Full .NET SDK)
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /app
 
