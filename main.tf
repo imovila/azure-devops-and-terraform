@@ -1,5 +1,9 @@
 provider "azurerm" {
-  features {}
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = false
+    }
+  }
 }
 
 terraform {
@@ -12,7 +16,7 @@ terraform {
 
   backend "azurerm" {
     resource_group_name  = "tf_rg_blobstore"
-    storage_account_name = "tfstorageimovila"
+    storage_account_name = "tfstorageimovilaapi"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
   }
@@ -29,7 +33,7 @@ resource "azurerm_container_group" "tfcg_test" {
   resource_group_name = azurerm_resource_group.tf_test.name
 
   ip_address_type = "Public"
-  dns_name_label  = "imovilawa"
+  dns_name_label  = "imovila-webapi"
   os_type         = "Linux"
 
   container {
